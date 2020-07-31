@@ -33,7 +33,7 @@
   },
   "scripts": {
     "test:composer": "@composer validate --strict",
-    "test:cs": "phpcs --standard=doctrine src/ tests/",
+    "test:cs": "phpcs --standard=Doctrine src/ tests/",
     "test:analysis": "phpstan analyse --level=max src/ tests/",
     "test:unit": "phpunit",
     "test": [
