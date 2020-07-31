@@ -27,7 +27,9 @@ final class CallableRequestHandlerTest extends TestCase
         $request = (new ServerRequest())
             ->withAttribute('msg', 'Hello There');
 
-        $requestHandler = new CallableRequestHandler(static fn () => new TextResponse($request->getAttribute('msg')));
+        $requestHandler = new CallableRequestHandler(
+            static fn (ServerRequest $request) => new TextResponse($request->getAttribute('msg'))
+        );
 
         self::assertEquals(
             'Hello There',
