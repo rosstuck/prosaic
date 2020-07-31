@@ -30,5 +30,17 @@
     "psr-4": {
       "Prosaic\\Tests\\": "tests"
     }
+  },
+  "scripts": {
+    "test:composer": "@composer validate --strict",
+    "test:cs": "phpcs --standard=doctrine src/ tests/",
+    "test:analysis": "phpstan analyse --level=max src/ tests/",
+    "test:unit": "phpunit",
+    "test": [
+        "@test:composer",
+        "@test:cs",
+        "@test:analysis",
+        "@test:unit"
+    ]
   }
 }
