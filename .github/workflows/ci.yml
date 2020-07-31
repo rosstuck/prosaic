@@ -30,14 +30,17 @@ jobs:
                     key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
                     restore-keys: ${{ runner.os }}-composer-
 
+            -   name: Check Composer configuration
+                run: composer run-script test:composer
+
             -   name: Install dependencies
                 run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-            -   name: phpunit
-                run: vendor/bin/phpunit --coverage-text
+            -   name: Run unit tests
+                run: composer run-script test:unit
 
-            -   name: phpstan
-                run: vendor/bin/phpstan analyse --level=max src tests
+            -   name: Run static analysis
+                run: composer run-script test:analysis
 
-            -   name: phpcs
-                run: vendor/bin/phpcs --standard=Doctrine src tests
+            -   name: Check code styling
+                run: composer run-script test:cs
