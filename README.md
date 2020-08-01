@@ -28,7 +28,5 @@ $response = $dispatcher->dispatch($request);
 
 ## Testing
 ~~~shell script
-./vendor/bin/phpunit
-./vendor/bin/phpstan analyse --level=max src tests
-./vendor/bin/phpcs --standard=doctrine src tests
+composer test
 ~~~
